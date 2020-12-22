@@ -1,4 +1,8 @@
+# http://deckofcardsapi.com/
+# https://pypi.org/project/emoji/
+
 import requests
+import emoji
 
 def new_deck():
     try:
@@ -7,8 +11,8 @@ def new_deck():
             return r.json()
         else:
             return "Error {}".format(r.status_code)
-    except:
-        return "Error"
+    except Exception as e:
+        return e
 
 def shuffle(id):
     try:
@@ -18,10 +22,25 @@ def shuffle(id):
             return r.json()
         else:
             return "Error {}".format(r.status_code)
-    except:
-        return "Error"
+    except Exception as e:
+        return e
+
+def draw(id, count):
+    try:
+        url = "https://deckofcardsapi.com/api/deck/" + id + "/draw/?count=" + str(count)
+        r = requests.get(url)
+        if r.status_code == 200:
+            return r.json()
+        else:
+            return "Error {}".format(r.status_code)
+    except Exception as e:
+        return e
 
 deck = new_deck()
 print(deck)
 shuf = shuffle(deck['deck_id'])
 print(shuf)
+d = draw(deck['deck_id'], 2)
+print(d)
+print("*" * 50)
+
