@@ -17,6 +17,6 @@ while True:
     print("connection from {}".format(address))
 
     message = "connected to the server\r\n"
-    clientsocket.send(message)
+    clientsocket.send(message.encode('ascii'))
 
     clientsocket.close()
