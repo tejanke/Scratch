@@ -95,3 +95,4 @@ for card in d['cards']:
     print(card['suit'], card_emoji_suits[card['suit']])
     print(emoji.emojize(val, use_aliases=True))
     print(emoji.emojize(sui, use_aliases=True))
+    print("{} of {}".format(emoji.emojize(val, use_aliases=True), emoji.emojize(sui, use_aliases=True)))
